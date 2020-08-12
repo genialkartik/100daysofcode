@@ -7,14 +7,17 @@ int main() {
   int sum = 0;
   cout<<"enter No: ";
   cin>>n;
-  int powerof;
-  cout<<"check Armstrong with power: ";
-  cin>>powerof;
+  int digitcount = 0;
+  int temp = n;
+  while(temp>0){
+    digitcount++;
+    temp = temp/10;
+  }
   int x;
   int number = n;
   while(number>0){
     x = number%10;
-    sum += pow(x,powerof);
+    sum += pow(x, digitcount);
     number=number/10;
   }
   if(sum == n){
@@ -23,7 +26,5 @@ int main() {
   else{
     cout<<n<<" is not an Armstrong Number."<<endl;
   }
-  
   return 0;
-  
 }
