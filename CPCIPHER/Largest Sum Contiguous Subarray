@@ -1,0 +1,27 @@
+
+#include<bits/stdc++.h>
+using namespace std;
+int main() 
+{ 
+    int a[] = {-2, -1, 2, -2, 1}; 
+    int n = 5; 
+    int max_sum = 0;
+    int max = 0; int max_curr = 0; 
+    for (int i = 0; i < n; i++) 
+    { 
+        max_curr= max_curr + a[i]; 
+        if (max < max_curr) 
+            max = max_curr; 
+        if (max_curr < 0) 
+            max_curr = 0; 
+        max_sum = max;
+    } 
+    cout << max_sum; 
+    return 0; 
+} 
+	// int cs=0,ms=0;
+	// for(int i=0;i<n;i++){
+	// 	cs += a[i];
+	// 	cs = cs<0?0:cs;
+	// 	ms = max(ms,cs);
+	// }
