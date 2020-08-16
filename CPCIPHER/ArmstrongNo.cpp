@@ -26,5 +26,4 @@ int main() {
   else{
     cout<<n<<" is not an Armstrong Number."<<endl;
   }
-  return 0;
 }
