@@ -38,6 +38,5 @@ int main()
 { 
     vector<int> arr = {4, 12, 3, 3, 8, 5, 1, 10}; 
     countSort (arr); 
-    printArray (arr); 
-    return 0; 
+    printArray (arr);
 } 
