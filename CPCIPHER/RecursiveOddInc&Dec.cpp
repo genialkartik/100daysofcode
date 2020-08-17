@@ -1,31 +1,24 @@
-#include <bits/stdc++.h>
-using namespace std; 
-
-int m = 0;
-void res(int n){
-  cout<<endl;
-  if(n==0){
-    cout<<0;
-    res(n-2);
-  }
-  else if(n>0){
-    if(n==1){
-      cout<<n;
-      res(0);
-    }else{
-    cout<<n;
-    res(n-2); }
-  }
-  else if(n<0 && abs(n)<=m) {
-    cout<<abs(n);
-    res(n-2);
-  }
+#include <iostream>
+using namespace std;
+ 
+void diskip(int num) {
+	if(num<0) {
+		return;
+	}
+	if(num%2!=0) {
+		cout<<num<<endl;
+	}
+ 
+	// Recursion call
+	diskip(num-1);
+ 
+	if(num%2==0) {
+		cout<<num<<endl;
+	}
 }
-int main()
+ 
+int main(int argc, char const *argv[])
 {
-  int n; cin>>n;
-  m = n;
-  res(n);
-  return 0;
+	diskip(7);
+	return 0;
 }
-
