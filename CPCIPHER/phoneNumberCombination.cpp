@@ -1,41 +1,59 @@
 // https://leetcode.com/problems/letter-combinations-of-a-phone-number/solution/
 
-#include <bits/stdc++.h>
-using namespace std; 
+#include <iostream>
+#include <vector>
+using namespace std;
 
-vector<int> ans;
+vector<string> ar;
 
-void combination(vector<char> ph[], int n, string res){
-  int index = n%10;
+// Top-down Recursive function to find all possible combinations by
+// replacing key's digits with characters of the corresponding list
+void findCombinations(vector<char> keypad[], int input[],
+						string res, int index)
+{
+	// if we have processed every digit of key, print result
 	if (index == -1) {
-		cout << res << " ";
+    ar.push_back(res);
 		return;
 	}
-	int len = ph[index].size();
+
+	// stores current digit
+	int digit = input[index];
+
+	// size of the list corresponding to current digit
+	int len = keypad[digit].size();
+
+	// one by one replace the digit with each character in the
+	// corresponding list and recur for next digit
 	for (int i = 0; i < len; i++) {
-		combination(ph, n/10, ph[index][i] + res);
+		findCombinations(keypad, input, keypad[digit][i] + res, index - 1);
 	}
 }
 
 int main()
 {
-  vector<char> ph[] = {
-    {},
-    {},
-    {'a', 'b', 'c'},
-    {'d', 'e', 'f'},
-    {'g', 'h', 'i'},
-    {'j', 'k', 'l'},
-    {'m', 'n', 'o'},
-    {'p', 'q', 'r', 's'},
-    {'t', 'u', 'v'},
-    {'w', 'x', 'y', 'z'}
-  };
-  int n;
-  cin>>n;
-  vector<int> res;
-  combination(ph, n, "");
+	// mobile keypad
+	vector<char> keypad[] =
+	{
+		{}, {},		// 0 and 1 digit don't have any characters associated
+		{ 'A', 'B', 'C' },
+		{ 'D', 'E', 'F' },
+		{ 'G', 'H', 'I' },
+		{ 'J', 'K', 'L' },
+		{ 'M', 'N', 'O' },
+		{ 'P', 'Q', 'R', 'S'},
+		{ 'T', 'U', 'V' },
+		{ 'W', 'X', 'Y', 'Z'}
+	};
 
-  return 0;
+	// input number in the form of an array (number can't start from 0 or 1)
+	int input[] = { 2, 3 };
+	int n = sizeof(input)/sizeof(input[0]);
+
+	// find all combinations
+	findCombinations(keypad, input, string(""), n - 1);
+  for(vector<string>::iterator it =  ar.begin(); it!=ar.end(); it++){
+    cout<<*it<<" ";
+  }
+	return 0;
 }
-
