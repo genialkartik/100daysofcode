@@ -2,8 +2,7 @@
 
 class Solution {
 public:
-    void recursion(TreeNode* root, int level, vector<int>& res)
-    {
+    void recursion(TreeNode* root, int level, vector<int>& res){
         if (root == nullptr)
             return;
         if (res.size() < level)
@@ -12,7 +11,6 @@ public:
         recursion(root->left, level + 1, res);
         return;
     }
-
     vector<int> rightSideView(TreeNode* root) {
         vector<int> res;
         recursion(root, 1, res);
